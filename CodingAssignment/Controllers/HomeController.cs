@@ -8,7 +8,7 @@ namespace CodingAssignment.Controllers
 	public class HomeController : Controller
 	{
 		[HttpGet]
-		[Route("/Listify/{begin}/{end}/{index}")]
+		[Route("Listify/{begin:int}/{end:int}/{index:int}")]
 		public IActionResult Listify(int begin, int end, int index)
 		{
 			var list = new Listify(begin, end);
