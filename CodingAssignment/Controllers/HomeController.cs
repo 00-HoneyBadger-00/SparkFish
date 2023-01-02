@@ -8,10 +8,12 @@ namespace CodingAssignment.Controllers
 	public class HomeController : Controller
 	{
 		[HttpGet]
-		[Route("Listify/{begin:int}/{end:int}/{index:int}")]
-		public IActionResult Listify(int begin, int end, int index)
+		[Route("Listify/{begin:int}/{count:int}/{index:int}")]
+		public IActionResult Listify(int begin, int count, int index)
 		{
-			var list = new Listify(begin, end);
+			if (index >= (count - begin))
+				return BadRequest();
+			var list = new Listify(begin, count);
 			var res = list.Where(rec => rec == list[index]);
 			return Ok(res);
 		}
